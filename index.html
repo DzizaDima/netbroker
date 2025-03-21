@@ -105,21 +105,21 @@
                         <div class="col-start-2 col-end-3 w-fit my-2 flex gap-1">
                             <input type="text" class="text-date-input col-start-2 col-end-3 border w-fit px-1.5 max-w-[130px]"
                                 value="23 Apr 2025">
-                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="23 Apr 2025">
+                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="">
                         </div>
 
                         <label class="flex col-start-1 col-end-2">Effective From:</label>
                         <div class="col-start-2 col-end-3 w-fit my-2 flex gap-1">
                             <input type="text" class="text-date-input col-start-2 col-end-3 border w-fit px-1.5 max-w-[130px]"
                                 value="23 Apr 2025">
-                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="2025-04-25">
+                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="">
                         </div>
 
                         <label class="flex col-start-1 col-end-2">Effective To:</label>
                         <div class="col-start-2 col-end-3 w-fit my-2 flex gap-1">
                             <input type="text" class="text-date-input col-start-2 col-end-3 border w-fit px-1.5 max-w-[130px]"
                                 value="23 Apr 2025">
-                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="2025-04-25">
+                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="">
                         </div>
                     </div>
                     <textarea name="" id="" rows="5" class="w-full h-full bg-orange-50 border mt-1"></textarea>
@@ -918,7 +918,7 @@
                                         .replace(/^(\.\d*)$/, '0$1')
                                         .replace(/(\..*?)\./g, '$1');
                 });
-
+        
                 inp.addEventListener("change", function () {
                     let num = parseFloat(this.value);
                     this.value = !isNaN(num) ? num.toFixed(2) : '';
@@ -953,7 +953,7 @@
             }
         
             dateTextInputs.forEach(input => {
-                //input.nextElementSibling.value = formatDateReversed(input.value);
+                input.nextElementSibling.value = formatDateReversed(input.value);
 
                 input.addEventListener("input", function () {
                     this.style.border = datePattern.test(this.value) ? "" : "2px solid red";

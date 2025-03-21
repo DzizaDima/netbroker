@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Transaction</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+<style>
+    body .container {
+        max-height: calc(100vh - 48px);
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    input[type="date"] {
+        width: 20px;
+        height: 23px;
+    }
+
+    input[type="text"]{
+        outline: none;
+    }
+</style>
+
+<body class="bg-white flex flex-col items-end justify-center overflow-hidden py-6 px-5 @min-[1400px]:p-0">
+    <div class="container w-full max-w-full min-[1400px]:max-w-9/10 shadow-lg border overflow-auto mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col justify-between items-start border-b">
+            <div class="flex justify-between py-1 px-3 w-full">
+                <a href="#" class="text-5xl">Logo</a>
+                <div class="flex flex-col items-center">
+                    <div class="text-lg font-semibold">ENBC ACCOUNTS TEST - Policy Transaction</div>
+                    <span class="error text-red-600 font-semibold">You must update or cancel before you leave.</span>
+                </div>
+
+                <div class="flex flex-col items-end gap-2">
+                    <div class="flex gap-2">
+                        <p>You are logged on as <span>greg Ambrose</span>:<span> Session 1</span></p>
+                        <button class="border text-black bg-gray-300 h-fit px-2 my-auto">Log Off</button>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="text-red-600 font-bold">ACCT. PER.: 01/FY2024</span>
+                        <button class="border text-black bg-gray-300 h-fit px-2 my-auto">Start New Session</button>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex justify-between w-full bg-gray-500 pr-2">
+                <ul class="flex">
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Home</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Clients</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Policies</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Insurance Companies</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Introducers</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Accounts</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Reports</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">Messaging</a></li>
+                    <li><a href="#" class="block py-0.5 px-3 hover:bg-red-500 text-white">System Tables</a></li>
+                </ul>
+                <button>Q</button>
+            </nav>
+        </header>
+
+        <main class="grid grid-rows-[auto_auto] grid-cols-4 bg-gray-50">
+            <!-- Transaction Controls -->
+            <div class="flex flex-col">
+                <div class="flex flex-wrap items-start h-fit gap-x-1 gap-y-3 px-1 pt-1 pb-2">
+                    <button class="border text-black bg-gray-300 px-2 h-6">Back</button>
+                    <button class="border text-black bg-gray-300 px-2 h-6">New Transaction</button>
+                    <select name="" id="" class="border rounded-sm bg-gray-100 px-1 h-6">
+                        <option value="select">Select Type</option>
+                    </select>
+                    <select name="" id="" class="border">
+                        <option value="select">post to current period - 01/FY2024</option>
+                    </select>
+                </div>
+                <div class="flex flex-col py-2 px-2 h-full">
+                    <div class="grid bg-blue-100 grid-cols-[auto_auto] items-center px-1">
+                        <span class="flex col-start-1 col-end-2">Trans Type:</span>
+                        <span class="col-start-2 col-end-3">Endt. - AP</span>
+
+                        <span class="flex col-start-1 col-end-2">Invoice No.:</span>
+                        <span class="col-start-2 col-end-3">3029638</span>
+
+                        <span class="flex col-start-1 col-end-2">Trans No.:</span>
+                        <span class="col-start-2 col-end-3">7044304</span>
+
+                        <span class="flex col-start-1 col-end-2">Status:</span>
+                        <span class="col-start-2 col-end-3">Unpaid</span>
+
+                        <span class="flex col-start-1 col-end-2">Status Date:</span>
+                        <span class="col-start-2 col-end-3">19 Apr 2023</span>
+
+                        <span class="flex col-start-1 col-end-2">Acc. Period:</span>
+                        <span class="col-start-2 col-end-3">01/FY2024</span>
+
+                        <span class="flex col-start-1 col-end-2">Broker Ref:</span>
+                        <span class="col-start-2 col-end-3">SJD/2002157/3029638</span>
+
+                        <label class="flex col-start-1 col-end-2">Posting Date:</label>
+
+                        <div class="col-start-2 col-end-3 w-fit my-2 flex gap-1">
+                            <input type="text" class="text-date-input col-start-2 col-end-3 border w-fit px-1.5 max-w-[130px]"
+                                value="23 Apr 2025">
+                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="23 Apr 2025">
+                        </div>
+
+                        <label class="flex col-start-1 col-end-2">Effective From:</label>
+                        <div class="col-start-2 col-end-3 w-fit my-2 flex gap-1">
+                            <input type="text" class="text-date-input col-start-2 col-end-3 border w-fit px-1.5 max-w-[130px]"
+                                value="23 Apr 2025">
+                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="2025-04-25">
+                        </div>
+
+                        <label class="flex col-start-1 col-end-2">Effective To:</label>
+                        <div class="col-start-2 col-end-3 w-fit my-2 flex gap-1">
+                            <input type="text" class="text-date-input col-start-2 col-end-3 border w-fit px-1.5 max-w-[130px]"
+                                value="23 Apr 2025">
+                            <input type="date" class="col-start-2 col-end-3 border w-fit" value="2025-04-25">
+                        </div>
+                    </div>
+                    <textarea name="" id="" rows="5" class="w-full h-full bg-orange-50 border mt-1"></textarea>
+                </div>
+            </div>
+
+
+            <!-- Transaction Details -->
+            <div class="col-start-2 col-end-5 pr-3">
+                <div class="flex ">
+                    <div class="flex flex-wrap w-full justify-between mt-4">
+                        <div class="flex h-fit gap-1">
+                            <span class="font-bold">Client:</span>
+                            <span>Epping Lift Engineering Co. Ltd.</span>
+                        </div>
+
+                        <div class="flex h-fit gap-1">
+                            <span class="font-bold">Pol. No.:</span>
+                            <span>LE87772345</span>
+                        </div>
+
+                        <div class="flex h-fit gap-1">
+                            <span class="font-bold">C.O.B.:</span>
+                            <span>Engineering - Ins. & Inspection</span>
+                        </div>
+
+                        <div class="flex h-fit w-full gap-1 my-2">
+                            <label class="font-bold flex shrink-0">Transaction Description:</label>
+                            <input type="text" name="" id="" class="min-w-2xs w-full h-fit border bg-white">
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="input-table col-start-2 col-end-5 grid grid-cols-[2fr_4fr_2fr_4fr_3fr_1.5fr_1.5fr_1.5fr_1.5fr] gap-0.5 bg-white">
+                    <span class="font-bold bg-blue-200 px-0.5 col-start-1 col-end-2">Detail</span>
+                    <span class="font-bold bg-blue-200 px-0.5 col-start-2 col-end-4">Client</span>
+                    <span class="font-bold bg-blue-200 px-0.5 col-start-4 col-end-6">Broker</span>
+                    <span class="font-bold bg-blue-200 px-0.5 col-start-6 col-end-8">Insurance Co.</span>
+                    <span class="font-bold bg-blue-200 px-0.5 col-start-8 col-end-10">AddOn I.C.</span>
+
+                    <!--row 1-->
+
+                    <div class="flex bg-green-100 p-0.5">
+                        <span>Main Prem.:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <label class="">inc IPT</label>
+                        <input data-type="number" type="text" name="" id="" class="h-fit border bg-white max-w-[100px] text-end" value=".00">
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5">
+                        <label class="">Comm. @ <input data-type="number" type="text" name="" id=""
+                                class="h-fit border bg-white max-w-[50px] text-end" value=".00"> %</label>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5">
+                        <input data-type="number" type="text" name="" id="" value=".00"
+                            class="h-fit border bg-white max-w-[100px] text-end">
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5">
+                        <span>Net :</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5">
+                        <span></span>
+                    </div>
+
+                    <!--row 2-->
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <label class="">A.P.:</label>
+                        <input type="text" name="" id="" class="h-fit border bg-white flex max-w-[80px] text-end">
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <label class="">inc IPT</label>
+                        <input data-type="number" value=".00" type="text" name="" id="" class="h-fit border bg-white max-w-[100px] text-end">
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <label class="">Comm. @ <input data-type="number" value=".00" type="text" name="" id=""
+                                class="h-fit border bg-white max-w-[50px] text-end"> %</label>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <input type="text" name="" id="" data-type="number" value=".00"
+                            class="h-fit border bg-white max-w-[100px] text-end">
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>Net :</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <!--row 3-->
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Total prem.:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>inc IPT .00</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Total Commisiion</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Net :</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <!--row 4-->
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>IPT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>@ .00 %:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>IPT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <!--row 5-->
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Ins. Co. Fee:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <input type="text" name="" id="" class="h-fit border bg-white max-w-[100px] text-end">
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <input type="text" name="" id="" data-type="number" value=".00"
+                            class="h-fit border bg-white max-w-[80px] text-end">
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <label class="">Comm. @ <input data-type="number" value=".00" type="text" name="" id=""
+                                class="h-fit border bg-white max-w-[50px] text-end"> %</label>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <input data-type="number" value=".00" type="text" name="" id="" class="h-fit border bg-white max-w-[100px] text-end">
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Net :</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <!--row 6-->
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>VAT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>@ .00 %:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>VAT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <!--row 7-->
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span class="text-blue-700">AddOn Prem:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <label class="shrink-0">inc IPT</label>
+                        <input data-type="number" value=".00" type="text" name="" id="" class="h-fit border bg-white max-w-[80px] text-end">
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <label class="">Comm. @ <input data-type="number" value=".00" type="text" name="" id=""
+                                class="h-fit border bg-white max-w-[50px] text-end"> %</label>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <input type="text" name="" id="" data-type="number" value=".00"
+                            class="h-fit border bg-white max-w-[100px] text-end">
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Net:</span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <!--row 8-->
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>IPT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>@ .00 %:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>IPT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <!--row 9-->
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Discount:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>Client Discount:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>-.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <!--row 10-->
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>Broker Fee:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <input type="text" name="" id="" data-type="number" value=".00"
+                            class="h-fit border bg-white max-w-[80px] text-end">
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span>Broker Fee:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <!--row 11-->
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>VAT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>@ .00 %:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span>VAT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1">
+                        <span>.00</span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-green-100 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">Total:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">Total:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">Total:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">.00</span>
+                    </div>
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">Total:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1">
+                        <span class="font-bold">.00</span>
+                    </div>
+
+                    <!--row 12-->
+
+                    <div class="flex flex-col bg-green-100 p-0.5 gap-1 col-start-4 col-end-5">
+                        <span>less Intro. Comm.</span>
+                        <label class="flex gap-1">@ <input type="text" name="" id="" data-type="number" value=".00"
+                                class="h-fit border bg-white flex max-w-[80px] text-end"> %:</label>
+                    </div>
+
+                    <div class="flex items-end justify-end bg-green-100 p-0.5 gap-1 col-start-5 col-end-6">
+                        <label for="">-</label>
+                        <input type="text" name="" id="" data-type="number" value=".00"
+                            class="h-fit border bg-white max-w-[100px] text-end">
+                    </div>
+
+                    <!--row 13-->
+
+                    <div class="flex bg-gray-200 p-0.5 gap-1 col-start-4 col-end-5">
+                        <span>less Broker's VAT:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-gray-200 p-0.5 gap-1 col-start-5 col-end-6">
+                        <span>-.00</span>
+                    </div>
+
+                    <!--row 14-->
+
+                    <div class="flex bg-green-100 p-0.5 gap-1 col-start-4 col-end-5">
+                        <span class="font-bold">Broker Total:</span>
+                        <span></span>
+                    </div>
+
+                    <div class="flex justify-end bg-green-100 p-0.5 gap-1 col-start-5 col-end-6">
+                        <span class="font-bold">.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Policy Transactions Table -->
+            <div class="col-start-1 col-end-5 px-3">
+                <h2 class="font-bold">Existing Policy Transactions</h2>
+                <div class="overflow-auto scroll-table max-h-34 flex flex-col gap-0.5">
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-1 col-end-2">Type</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-2 col-end-3">Invoice
+                            No.</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-3 col-end-4">Trans.
+                            No</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-4 col-end-5">Transaction
+                            Description</span>
+
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-5 col-end-6">Dir?</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-6 col-end-7">Original</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-7 col-end-8">Balance Due</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-8 col-end-9">Total Paid</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-9 col-end-10">Date Paid</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-10 col-end-11">Docs. Sent</span>
+                        <span class="flex items-center bg-blue-200 px-0.5 col-start-11 col-end-12">Init.</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-blue-200 px-0.5 col-start-12 col-end-13">Trans.
+                            <br> Date & Time</span>
+                    </div>
+
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+                    <div class="grid grid-cols-[3fr_3fr_2fr_8fr_1.5fr_3fr_3fr_2fr_2fr_2fr_1.5fr_4fr] gap-0.5">
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-1 col-end-2">Endt.-AP</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-2 col-end-3">3029629</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-3 col-end-4">7044294</span>
+                        <span
+                            class="flex items-center bg-green-100 px-0.5 col-start-4 col-end-5">kkkkkkyyyyyfirst</span>
+
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-5 col-end-6">N</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-6 col-end-7">321677.00</span>
+                        <span
+                            class="flex items-center justify-end bg-green-100 px-0.5 col-start-7 col-end-8">321677.00</span>
+                        <span class="flex items-center justify-end bg-green-100 px-0.5 col-start-8 col-end-9">.00</span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-9 col-end-10"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-10 col-end-11"></span>
+                        <span class="flex items-center bg-green-100 px-0.5 col-start-11 col-end-12">GPA</span>
+                        <span
+                            class="flex items-center justify-center text-center bg-green-100 px-0.5 col-start-12 col-end-13">18/06/2024
+                            09:14</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+        <nav class="w-full flex justify-end mx-auto my-3">
+            <ul class="flex justify-end w-full px-3 gap-2">
+                <li>
+                    <button class="border text-black bg-gray-300 h-fit px-2 my-auto">Clients Details</button>
+                </li>
+                <li>
+                    <button class="border text-black bg-gray-300 h-fit px-2 my-auto">Transaction Documents</button>
+                </li>
+                <li>
+                    <button class="border text-black bg-gray-300 h-fit px-2 my-auto">View Document</button>
+                </li>
+            </ul>
+        </nav>
+        <footer class="bg-gray-500 flex justify-center">
+            <p>Copyright test @2006-2025 <a href="#" class="text-blue-800">e-netagency</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateTextInputs = document.querySelectorAll('.text-date-input');
+            const datePattern = /^(0?[1-9]|[12][0-9]|3[01])\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{4}$/;
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        
+            document.querySelectorAll('.input-table input[data-type="number"]').forEach(inp => {
+                inp.addEventListener("input", function () {
+                    this.value = this.value.replace(/[^0-9.]/g, '')
+                                        .replace(/^(\.\d*)$/, '0$1')
+                                        .replace(/(\..*?)\./g, '$1');
+                });
+
+                inp.addEventListener("change", function () {
+                    let num = parseFloat(this.value);
+                    this.value = !isNaN(num) ? num.toFixed(2) : '';
+                });
+            });
+        
+            document.querySelectorAll('input[type="date"]').forEach(inp => {
+                inp.addEventListener("change", function () {
+                    const formattedValue = this.value.length > 1 ? formatDate(this.value) : '';
+                    this.previousElementSibling.value = formattedValue;
+                    this.setAttribute('formatted-value', formattedValue);
+                });
+            });
+        
+            function formatDate(dateStr) {
+                const [year, month, day] = dateStr.split("-");
+                return `${day.padStart(2, "0")} ${months[parseInt(month) - 1]} ${year}`;
+            }
+        
+            function formatDateReversed(dateStr) {
+                const [day, monthStr, year] = dateStr.split(" ");
+                const month = (months.indexOf(monthStr) + 1).toString().padStart(2, "0");
+                return `${year}-${month}-${day.padStart(2, "0")}`;
+            }
+        
+            function fixMonthFormat(value) {
+                return value.replace(/(\d{1,2})\s([a-zA-Z]+)\s(\d{4})/, (match, day, month, year) => {
+                    const formattedMonth = months.find(m => m.toLowerCase() === month.toLowerCase());
+                    const formattedDay = day.padStart(2, "0");
+                    return formattedMonth ? `${formattedDay} ${formattedMonth} ${year}` : match;
+                });
+            }
+        
+            dateTextInputs.forEach(input => {
+                //input.nextElementSibling.value = formatDateReversed(input.value);
+
+                input.addEventListener("input", function () {
+                    this.style.border = datePattern.test(this.value) ? "" : "2px solid red";
+                });
+        
+                input.addEventListener("blur", function () {
+                    this.value = fixMonthFormat(this.value);
+                    if (datePattern.test(this.value)) {
+                        this.style.border = "";
+                        this.nextElementSibling.value = formatDateReversed(this.value);
+                    } else {
+                        this.style.border = "2px solid red";
+                    }
+                });
+            });
+        });
+        </script>
+</body>
+
+</html>

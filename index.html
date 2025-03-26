@@ -914,14 +914,26 @@
         
             document.querySelectorAll('.input-table input[data-type="number"]').forEach(inp => {
                 inp.addEventListener("input", function () {
-                    this.value = this.value.replace(/[^0-9.]/g, '')
-                                        .replace(/^(\.\d*)$/, '0$1')
-                                        .replace(/(\..*?)\./g, '$1');
+                    this.value = this.value
+                        .replace(/[^0-9.]/g, '')
+                        .replace(/^(\.\d*)$/, '0$1')
+                        .replace(/(\..*?)\./g, '$1');
                 });
-        
+
                 inp.addEventListener("change", function () {
-                    let num = parseFloat(this.value);
-                    this.value = !isNaN(num) ? num.toFixed(2) : '';
+                    let numStr = this.value;
+
+                    if (!numStr || isNaN(numStr)) {
+                        this.value = '.00';
+                        return;
+                    }
+
+                    if (numStr.includes('.')) {
+                        const [intPart, decimalPart] = numStr.split('.');
+                        this.value = `${intPart}.${decimalPart.slice(0, 2)}`;
+                    } else {
+                        this.value = numStr;
+                    }
                 });
             });
         

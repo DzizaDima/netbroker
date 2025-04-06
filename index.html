@@ -154,7 +154,7 @@
                 </div>
 
                 <div
-                    class="input-table col-start-2 col-end-5 grid grid-cols-[2fr_4fr_2fr_4fr_3fr_1.5fr_1.5fr_1.5fr_1.5fr] gap-0.5 bg-white">
+                    class="input-table col-start-2 col-end-5 grid grid-cols-[2fr_4fr_2fr_4.5fr_2.5fr_1fr_2fr_1fr_2fr] gap-0.5 bg-white">
                     <span class="font-bold bg-blue-200 px-0.5 col-start-1 col-end-2">Detail</span>
                     <span class="font-bold bg-blue-200 px-0.5 col-start-2 col-end-4">Client</span>
                     <span class="font-bold bg-blue-200 px-0.5 col-start-4 col-end-6">Broker</span>
@@ -208,7 +208,7 @@
 
                     <div class="flex bg-gray-200 p-0.5 gap-1">
                         <label class="">A.P.:</label>
-                        <input type="text" name="" id="" class="h-fit border bg-white flex max-w-[80px] text-end">
+                        <input type="text" name="" id="" class="h-fit border bg-white flex max-w-[80px]">
                     </div>
 
                     <div class="flex bg-gray-200 p-0.5 gap-1">
@@ -335,7 +335,7 @@
                     </div>
 
                     <div class="flex bg-green-100 p-0.5 gap-1">
-                        <input type="text" name="" id="" class="h-fit border bg-white max-w-[100px] text-end">
+                        <input type="text" name="" id="" class="h-fit border bg-white max-w-[100px]">
                     </div>
 
                     <div class="flex bg-green-100 p-0.5 gap-1">
@@ -948,6 +948,7 @@
                     const formattedValue = this.value.length > 1 ? formatDate(this.value) : '';
                     this.previousElementSibling.value = formattedValue;
                     this.setAttribute('formatted-value', formattedValue);
+                    this.setAttribute('value', this.value);
                 });
             });
         

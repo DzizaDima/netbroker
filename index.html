@@ -914,10 +914,16 @@
         
             document.querySelectorAll('.input-table input[data-type="number"]').forEach(inp => {
                 inp.addEventListener("input", function () {
-                    this.value = this.value
-                        .replace(/[^0-9.]/g, '')
-                        .replace(/^(\.\d*)$/, '0$1')
-                        .replace(/(\..*?)\./g, '$1');
+                    let value = this.value.replace(/[^0-9.]/g, '')
+                                        .replace(/^(\.\d*)$/, '0$1')
+                                        .replace(/(\..*?)\./g, '$1');
+
+                    if (value.includes('.')) {
+                        const [intPart, decimalPart] = value.split('.');
+                        value = `${intPart}.${(decimalPart || '').slice(0, 2)}`;
+                    }
+
+                    this.value = value;
                 });
 
                 inp.addEventListener("change", function () {
@@ -930,9 +936,9 @@
 
                     if (numStr.includes('.')) {
                         const [intPart, decimalPart] = numStr.split('.');
-                        this.value = `${intPart}.${decimalPart.slice(0, 2)}`;
+                        this.value = `${intPart}.${(decimalPart || '').slice(0, 2).padEnd(2, '0')}`;
                     } else {
-                        this.value = numStr;
+                        this.value = `${numStr}.00`;
                     }
                 });
             });
